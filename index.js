@@ -2,12 +2,49 @@ import 'dotenv/config'
 import connectDB from "./src/db/index.js";
 import mongoose from 'mongoose';
 import { configuration } from './src/constants.js';
-import express from 'express'
+import chalk from 'chalk';
+import { app } from './src/app.js';
 
-const app = express()
 const port = process.env.PORT || 5000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //function for database connection
 connectDB()
+.then(()=>{
+  app.on('error', (error)=>{
+    console.log('Error :' , error)
+    throw error
+  })
+
+  app.listen(port ,()=>{
+    console.log(chalk.greenBright(`App is listing on : ${port}`))
+  })
+})
+.catch((err) => {
+  console.log('Mongodb failed ! ',err)
+})
+
+
+
+
+
+
+
+
+
+
 // you can also use this to connect database
 /*
 ;(async()=>{
