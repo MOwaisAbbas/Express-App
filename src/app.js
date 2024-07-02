@@ -1,18 +1,21 @@
-import express from 'express'; 
 import cookieParser from 'cookie-parser';
-import cors from 'cors'; 
+import cors from 'cors';
+import express from 'express';
+import routes from './routes/index.js';
 
 // Creating an instance of the Express application
-const app = express(); 
+const app = express();
 
 // Setting up CORS middleware with options to allow requests from specified origins and include credentials
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
-    credentials: true 
+    credentials: true
 }));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
+app.use('/', routes)
 
-export {app}; // Exporting the Express application instance
+export { app }; // Exporting the Express application instance
+

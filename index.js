@@ -1,9 +1,7 @@
-import 'dotenv/config'
-import connectDB from "./src/db/index.js";
-import mongoose from 'mongoose';
-import { configuration } from './src/constants.js';
 import chalk from 'chalk';
+import 'dotenv/config';
 import { app } from './src/app.js';
+import connectDB from "./src/db/index.js";
 
 const port = process.env.PORT || 5000
 
@@ -22,19 +20,19 @@ const port = process.env.PORT || 5000
 
 //function for database connection
 connectDB()
-.then(()=>{
-  app.on('error', (error)=>{
-    console.log('Error :' , error)
-    throw error
-  })
+  .then(() => {
+    app.on('error', (error) => {
+      console.log('Error :', error)
+      throw error
+    })
 
-  app.listen(port ,()=>{
-    console.log(chalk.greenBright(`App is listing on : ${port}`))
+    app.listen(port, () => {
+      console.log(chalk.greenBright(`App is listing on : ${port}`))
+    })
   })
-})
-.catch((err) => {
-  console.log('Mongodb failed ! ',err)
-})
+  .catch((err) => {
+    console.log('Mongodb failed ! ', err)
+  })
 
 
 
