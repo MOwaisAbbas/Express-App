@@ -1,11 +1,17 @@
-import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
 const userSchema = new Schema(
   {
+    firstName: {
+      type: String
+    },
+    lastName: {
+      type: String
+    },
     username: {
       type: Schema.Types.String,
       required: true,
@@ -33,10 +39,6 @@ const userSchema = new Schema(
       required: true,
     },
     gender: {
-      type: Schema.Types.String,
-      required: true,
-    },
-    address: {
       type: Schema.Types.String,
       required: true,
     },

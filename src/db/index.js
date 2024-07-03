@@ -1,6 +1,6 @@
-import mongoose from 'mongoose'
-import { configuration } from '../constants.js'
 import chalk from 'chalk';
+import mongoose from 'mongoose';
+import { configuration } from '../constants.js';
 
 const connectDB = async () => {
     try {
